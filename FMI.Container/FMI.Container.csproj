@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEEBFE0A-4F15-48BE-8B76-BEFBD37A0675}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FMI.Container</RootNamespace>
+    <AssemblyName>FMI.Container</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.WcfIntegration">
+      <HintPath>..\packages\Castle.WcfIntegrationFacility.3.3.0\lib\net45\Castle.Facilities.WcfIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Installers\ConfigurationInstaller.cs" />
+    <Compile Include="Installers\ManagerInstaller.cs" />
+    <Compile Include="Installers\RepositoryInstaller.cs" />
+    <Compile Include="Installers\ValidatorInstaller.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FMI.Configuration\FMI.Configuration.csproj">
+      <Project>{412c5ba7-b75b-4408-a86f-8a73ab87249d}</Project>
+      <Name>FMI.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Domain.Repositories.UnitTests\FMI.Domain.Repositories.UnitTests.csproj">
+      <Project>{86265412-cc6c-4e4f-948b-b91db08509d3}</Project>
+      <Name>FMI.Domain.Repositories.UnitTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Domain.Repositories\FMI.Domain.Repositories.csproj">
+      <Project>{0a8da4f6-f27b-4697-bfe2-4f61d001a35b}</Project>
+      <Name>FMI.Domain.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Domain.Services\FMI.Domain.Services.csproj">
+      <Project>{9fa958cf-ebe9-42a2-b54e-53366c1a03df}</Project>
+      <Name>FMI.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Domain.Validators\FMI.Domain.Validators.csproj">
+      <Project>{aa60904b-b41e-45f2-bbf1-9168720f71f9}</Project>
+      <Name>FMI.Domain.Validators</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Domain\FMI.Domain.csproj">
+      <Project>{1db656a6-b0d5-4978-9555-33bf53a4a586}</Project>
+      <Name>FMI.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Exceptions\FMI.Exceptions.csproj">
+      <Project>{9d9c98a8-05c9-4974-88c8-29ee39e38980}</Project>
+      <Name>FMI.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMI.Extensions\FMI.Extensions.csproj">
+      <Project>{c921b1b6-c696-4aa9-b4e6-50fa82f8c8f1}</Project>
+      <Name>FMI.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Facilities\" />
+    <Folder Include="Interceptors\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
